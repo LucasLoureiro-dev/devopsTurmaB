@@ -1,14 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+
+    <title>Pica-Pau | O Pássaro Mais Maluco</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        /* CABEÇALHO */
+        header {
+            background: linear-gradient(135deg, #d71920, #ffcc00);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0 #222;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* MENU */
+        nav {
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* BANNER */
+        .banner {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.45)
+                ),
+                url("https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .banner-content {
+            color: white;
+            max-width: 800px;
+        }
+
+        .banner h2 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px #000;
+        }
+
+        .banner p {
+            font-size: 21px;
+            line-height: 1.6;
+        }
+
+        /* SEÇÕES */
+        section {
+            padding: 60px 10%;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 35px;
+            color: #d71920;
+        }
+
+        /* SOBRE */
+        .sobre {
+            background-color: white;
+        }
+
+        .sobre-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .sobre-texto {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .sobre-card {
+            flex: 1;
+            background: #ffcc00;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .sobre-card h3 {
+            color: #d71920;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        /* PERSONAGENS */
+        .personagens {
+            background-color: #eeeeee;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .card .emoji {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #d71920;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        /* CURIOSIDADES */
+        .curiosidades {
+            background-color: #fff;
+        }
+
+        .curiosidades ul {
+            max-width: 800px;
+            margin: auto;
+            list-style: none;
+        }
+
+        .curiosidades li {
+            background-color: #ffcc00;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+        .curiosidades li::before {
+            content: "🌳 ";
+        }
+
+        /* FRASE */
+        .frase {
+            background: linear-gradient(135deg, #d71920, #8b0000);
+            color: white;
+            text-align: center;
+        }
+
+        .frase blockquote {
+            font-size: 30px;
+            font-weight: bold;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 800px) {
+
+            .sobre-container {
+                flex-direction: column;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .banner h2 {
+                font-size: 40px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <center>
-        <h1>projeto na turma B - novo status</h1>
-        <h1> novo conteudo para manutencao </h1>
-    </center>
+
+    <header>
+        <h1>🐦 PICA-PAU</h1>
+        <p>O pássaro mais maluco e divertido dos desenhos!</p>
+    </header>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#personagens">Personagens</a>
+        <a href="#curiosidades">Curiosidades</a>
+    </nav>
+
+    <main>
+
+        <section class="banner" id="inicio">
+            <div class="banner-content">
+                <h2>Ha Ha Ha Ha Ha!</h2>
+                <p>
+                    Prepare-se para conhecer um dos personagens mais
+                    engraçados e conhecidos da história dos desenhos animados.
+                </p>
+            </div>
+        </section>
+
+        <section class="sobre" id="sobre">
+
+            <h2>Sobre o Pica-Pau</h2>
+
+            <div class="sobre-container">
+
+                <div class="sobre-texto">
+                    <p>
+                        O Pica-Pau é um personagem clássico dos desenhos
+                        animados, conhecido por seu comportamento brincalhão,
+                        sua risada característica e suas confusões.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Criado pelo cartunista Walter Lantz, o personagem
+                        apareceu pela primeira vez em 1940 e se tornou
+                        extremamente popular em diversos países.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Com seu cabelo vermelho, corpo azul e personalidade
+                        irreverente, o Pica-Pau conquistou várias gerações
+                        de fãs.
+                    </p>
+                </div>
+
+                <div class="sobre-card">
+                    <h3>🌳 Um personagem clássico</h3>
+
+                    <p>
+                        O Pica-Pau é conhecido principalmente por suas
+                        aventuras e pelas confusões que causa com outros
+                        personagens.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Sua famosa risada é uma das características mais
+                        marcantes do personagem.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="personagens" id="personagens">
+
+            <h2>Personagens</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="emoji">🐦</div>
+                    <h3>Pica-Pau</h3>
+                    <p>
+                        O protagonista da série. Malandro, divertido e sempre
+                        pronto para arrumar uma nova confusão.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="emoji">🐴</div>
+                    <h3>Pé de Pano</h3>
+                    <p>
+                        Um dos personagens que aparecem nas aventuras do
+                        universo do Pica-Pau.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="emoji">🐧</div>
+                    <h3>Meany Ranheta</h3>
+                    <p>
+                        Uma personagem que frequentemente acaba envolvida
+                        nas confusões e brincadeiras do Pica-Pau.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="curiosidades" id="curiosidades">
+
+            <h2>Curiosidades</h2>
+
+            <ul>
+                <li>O Pica-Pau surgiu nos Estados Unidos em 1940.</li>
+                <li>O personagem foi criado por Walter Lantz.</li>
+                <li>Sua risada se tornou uma de suas características mais famosas.</li>
+                <li>O desenho ficou conhecido mundialmente.</li>
+                <li>O personagem passou por diferentes mudanças visuais ao longo dos anos.</li>
+            </ul>
+
+        </section>
+
+        <section class="frase">
+
+            <blockquote>
+                "Ha Ha Ha Ha Ha! Eu vou voltar!"
+            </blockquote>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>🐦 Site do Pica-Pau</p>
+        <p>Projeto desenvolvido com HTML e CSS interno.</p>
+    </footer>
+
 </body>
 </html>
